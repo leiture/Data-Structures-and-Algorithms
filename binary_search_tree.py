@@ -33,6 +33,12 @@ class Tree:
         return node
 
     def remove(self, v, node):
+        """
+        删除值为v的节点
+        :param v:
+        :param node:
+        :return:
+        """
         if node is None:
             return
         if node.value > v:
@@ -53,7 +59,7 @@ class Tree:
 
     def contains(self, t, root):
         """
-        查找
+        二叉树查找
         :param t:
         :param root:
         :return:
@@ -68,6 +74,11 @@ class Tree:
             return True
 
     def find_mix(self, root):
+        """
+        获取最小值的节点
+        :param root:
+        :return:
+        """
         if not root:
             return
         if not root.left:
@@ -75,6 +86,11 @@ class Tree:
         return self.find_mix(root.left)
 
     def find_max(self, root):
+        """
+        获取值最大的节点
+        :param root:
+        :return:
+        """
         if not root:
             return
         if not root.right:
