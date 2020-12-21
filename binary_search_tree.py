@@ -6,7 +6,7 @@ import random
 class Tree:
     """
     二叉排序树、二叉搜索树、二叉查找树
-    对二叉查找树进⾏行行中序遍历，即可得到有序的数列列。
+    对二叉查找树进⾏中序遍历，即可得到有序的数列列。
     """
 
     def __init__(self, v, left=None, right=None):
@@ -97,6 +97,84 @@ class Tree:
             return root
         return self.find_max(root.right)
 
+    def pre_order(self):
+        """
+        前序遍历
+        :return:
+        """
+        if self:
+            print(self.value, end=",")
+            self.left.pre_order() if self.left else None
+            self.right.pre_order() if self.right else None
+
+    def pre_order_(self):
+        """
+        前序遍历（非递归）
+        :return:
+        """
+        l = list()
+        root = self
+        while root or l:
+            while root:
+                print(root.value, end=",")
+                l.append(root)
+                root = root.left
+            root = l.pop()
+            root = root.right
+
+    def mid_order(self):
+        """
+        中序遍历
+        :return:
+        """
+        if self:
+            self.left.mid_order() if self.left else None
+            print(self.value, end=",")
+            self.right.mid_order() if self.right else None
+
+    def mid_order_(self):
+        """
+        中序遍历（非递归）
+        :return:
+        """
+        l = list()
+        root = self
+        while root or l:
+            while root:
+                l.append(root)
+                root = root.left
+            root = l.pop()
+            print(root.value, end=",")
+            root = root.right
+
+    def last_order(self):
+        """
+        后序遍历
+        :return:
+        """
+        if self:
+            self.left.last_order() if self.left else None
+            self.right.last_order() if self.right else None
+            print(self.value, end=",")
+
+    def last_order_(self):
+        """
+        后序遍历（非递归）
+        :return:
+        """
+        l1 = list()
+        l2 = list()
+        root = self
+        l1.append(root)
+        while l1:
+            root = l1.pop()
+            l1.append(root.left) if root.left else None
+            l1.append(root.right) if root.right else None
+            l2.append(root)
+        while l2:
+            root = l2.pop()
+            print(root.value, end=",")
+
 
 if __name__ == '__main__':
     n = Tree(55)
@@ -109,3 +187,14 @@ if __name__ == '__main__':
     print(n.find_max(n).value)
     n = n.remove(66, n)
     print(n)
+    n.pre_order()
+    print()
+    n.pre_order_()
+    print()
+    n.mid_order()
+    print()
+    n.mid_order()
+    print()
+    n.last_order()
+    print()
+    n.last_order_()
