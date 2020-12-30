@@ -1,6 +1,3 @@
-import random
-
-
 class Node:
     """
     二叉树类
@@ -156,7 +153,7 @@ def make_node(l=3, s=0):
         return n
     n.left = make_node(l - 1, s)
     n.right = make_node(l - 1
-                        , s+1)
+                        , s + 1)
     return n
 
 

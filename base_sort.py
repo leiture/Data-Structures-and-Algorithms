@@ -65,7 +65,7 @@ class Sort:
 
     def shell(self, lst, reverse=False):
         """
-        希尔排序
+        希尔排序：插入排序的优化。分组进行插入排序。
         time complexity:O(n*log(n))
         space complexity:O(1)
         stability:stable
@@ -101,6 +101,9 @@ class Sort:
 
     @staticmethod
     def __merge(left, right, reverse=False):
+        """
+        合并两个有序列表
+        """
         l = len(left)
         r = len(right)
         i = 0
@@ -143,10 +146,10 @@ class Sort:
 if __name__ == '__main__':
     l = [random.randint(0, 1000) for i in range(10)]
     print(l)
-    # print(Sort().bubble(l, reverse=False))
-    # print(Sort().select(l, reverse=True))
-    # print(Sort().insert(l, reverse=False))
-    # print(Sort().shell(l, reverse=True))
-    # print(Sort().merge(l, reverse=False))
+    print(Sort().bubble(l, reverse=False))
+    print(Sort().select(l, reverse=True))
+    print(Sort().insert(l, reverse=False))
+    print(Sort().shell(l, reverse=True))
+    print(Sort().merge(l, reverse=False))
     print(Sort().quick(l, reverse=True))
-    print(sorted(l, reverse=True))
+    print(sorted(l, reverse=False))
