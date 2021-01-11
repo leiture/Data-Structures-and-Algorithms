@@ -1,5 +1,6 @@
 # -*-coding:utf-8-*-
 import random
+import string
 
 import mmh3
 from bitarray import bitarray
@@ -10,7 +11,7 @@ class BloomFilter:
     布隆过滤器
     """
 
-    def __init__(self, size=800000, hashes=6):
+    def __init__(self, size=100000, hashes=4):
         """
         size:比特数组长度
         hashes:哈希函数个数（murmurhash3）
@@ -44,6 +45,15 @@ class BloomFilter:
 
 if __name__ == '__main__':
     bf = BloomFilter()
-    for _ in range(400000):
-        bf.add(str(random.randint(-999999999, 999999999)))
-    bf.contains("raybenleiture")
+    occupancy = 10000
+    count = 0
+    _str = None
+    for _ in range(100):
+        for _ in range(occupancy):
+            bf.add(str(random.randint(-999999999, 999999999)))
+        _str = "".join([random.choice(string.printable) for _ in range(100)])
+        if not bf.contains(_str):
+            count += 1
+    print(bf.get_finger_print(_str))
+    print("occupancy rate:", occupancy / bf.size)
+    print("correct rate:", count / 100)

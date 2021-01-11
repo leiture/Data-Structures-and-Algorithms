@@ -1,6 +1,9 @@
 # -*-coding:utf-8-*-
 # desc:classic sort alg
 import random
+import sys
+
+sys.setrecursionlimit(9999)
 
 
 class Sort:
@@ -144,7 +147,7 @@ class Sort:
 
 
 if __name__ == '__main__':
-    l = [random.randint(0, 1000) for i in range(10)]
+    l = [random.randint(0, 10000) for i in range(1000)]
     print(l)
     print(Sort().bubble(l, reverse=False))
     print(Sort().select(l, reverse=True))
