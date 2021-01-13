@@ -70,5 +70,5 @@ class SimHash(object):
 
 if __name__ == '__main__':
     s1 = SimHash().simHash("保持思考，持续进步，不要让迷茫成为你生命中的一部分。")
-    s2 = SimHash().simHash("保持思考，持续进步，要让迷茫成为你生命中的一部分。")
-    SimHash().getDistance(s1, s2)
+    s2 = SimHash().simHash("啊手动阀手动阀阿斯顿发顺丰啊士大夫阿斯蒂保持思考，持续进步，要让迷茫成为你生命中的一大部分。")
+    print(SimHash().getDistance(s1, s2))
